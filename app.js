@@ -7,7 +7,6 @@ const showSection = (sectionId) => {
     document.getElementById(sectionId).classList.remove('d-none');
 };
 
-// Pelanggan
 function addCustomer() {
     const name = document.getElementById('customerName').value.trim();
     const phone = document.getElementById('customerPhone').value.trim();
@@ -55,9 +54,29 @@ function searchCustomer() {
     displayCustomers(filtered);
 }
 
-// Edit and Delete Customer (similar functions for products, suppliers, transactions)
 function editCustomer(id) {
-    // Edit logic
+    const customers = getFromLocalStorage('customers');
+    const customer = customers.find(c => c.id === id);
+
+    if (!customer) return alert('Pelanggan tidak ditemukan!');
+
+    document.getElementById('customerName').value = customer.name;
+    document.getElementById('customerPhone').value = customer.phone;
+    document.getElementById('customerAddress').value = customer.address;
+    document.getElementById('customerEmail').value = customer.email;
+
+    document.getElementById('customerForm').onsubmit = function (e) {
+        e.preventDefault();
+        customer.name = document.getElementById('customerName').value;
+        customer.phone = document.getElementById('customerPhone').value;
+        customer.address = document.getElementById('customerAddress').value;
+        customer.email = document.getElementById('customerEmail').value;
+
+        saveToLocalStorage('customers', customers);
+        displayCustomers();
+        document.getElementById('customerForm').reset();
+        document.getElementById('customerForm').onsubmit = addCustomer;
+    };
 }
 
 function deleteCustomer(id) {
@@ -66,6 +85,3 @@ function deleteCustomer(id) {
     saveToLocalStorage('customers', updatedCustomers);
     displayCustomers();
 }
-
-// Similar CRUD functions for categories, suppliers, products, transactions
-// Add reporting and stock management functions as outlined earlier
