@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Kasir</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <h1 class="text-center mb-4">Aplikasi Kasir</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <button class="list-group-item list-group-item-action" onclick="showSection('customers')">Pelanggan</button>
+                    <button class="list-group-item list-group-item-action" onclick="showSection('categories')">Kategori</button>
+                    <button class="list-group-item list-group-item-action" onclick="showSection('suppliers')">Supplier</button>
+                    <button class="list-group-item list-group-item-action" onclick="showSection('products')">Produk</button>
+                    <button class="list-group-item list-group-item-action" onclick="showSection('transactions')">Transaksi</button>
+                    <button class="list-group-item list-group-item-action" onclick="showSection('reports')">Laporan</button>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="customers" class="section d-none">
+                    <h3>Pelanggan</h3>
+                    <form id="customerForm" class="mb-3">
+                        <div class="mb-2">
+                            <input type="text" id="customerName" class="form-control" placeholder="Nama Pelanggan" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="text" id="customerPhone" class="form-control" placeholder="No Handphone" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="text" id="customerAddress" class="form-control" placeholder="Alamat" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="email" id="customerEmail" class="form-control" placeholder="Email" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addCustomer()">Tambah</button>
+                    </form>
+                    <div class="input-group mb-3">
+                        <input type="text" id="searchCustomer" class="form-control" placeholder="Cari Pelanggan..." oninput="searchCustomer()">
+                    </div>
+                    <div id="customerList"></div>
+                </div>
+
+                <!-- Other sections: categories, suppliers, products, transactions, reports -->
+                <!-- Similar structure, replace IDs and adjust fields as needed -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
