@@ -1,4 +1,3 @@
-// Helper Functions
 const saveToLocalStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 const getFromLocalStorage = (key) => JSON.parse(localStorage.getItem(key)) || [];
 const generateId = (prefix) => `${prefix}-${Date.now()}`;
@@ -6,6 +5,7 @@ const showSection = (sectionId) => {
     document.querySelectorAll('.section').forEach(section => section.classList.add('d-none'));
     document.getElementById(sectionId).classList.remove('d-none');
 };
+
 
 function addCustomer() {
     const name = document.getElementById('customerName').value.trim();
